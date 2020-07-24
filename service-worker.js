@@ -7,6 +7,7 @@ const toCache = [
 	'/js/status.js',
 	'/images/icons/icon-152x152.png',
 	'/images/icons/icon-57x57.png',
+	'/images/h1_logo.png'
 ];
 
 self.addEventListener('install', function (event) {

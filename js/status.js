@@ -5,5 +5,7 @@ function init() {
 		const statusElem = document.querySelector('.page-status')
 
 		statusElem.innerHTML = 'offline'
+		statusElem.appendChild(document.createElement('img')).src = '/images/h1_logo.png';
+
 	}
 }
