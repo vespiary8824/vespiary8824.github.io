@@ -1,7 +1,7 @@
 
 //https://blog.woolta.com/categories/3/posts/195
 //https://joshua1988.github.io/web-development/pwa/pwa-push-noti-guide/
-export const PUSH_APPLICATION_SERVER_KEY = 'AAAAcbstLnc:APA91bHSLhyZKBG7XPMVx73NHDLH-n8hTo8WD6zZ_iGE3QSyJAS1DL1csB37F2psi68H2VtB_qQlyRB_5k4DjvTRI7Q9iHS3_fPl8e9z8jE2H9xF5ZdbmSYLQv6vl9Jqw6q-RpAPK_6N';
+const PUSH_APPLICATION_SERVER_KEY = 'AAAAcbstLnc:APA91bHSLhyZKBG7XPMVx73NHDLH-n8hTo8WD6zZ_iGE3QSyJAS1DL1csB37F2psi68H2VtB_qQlyRB_5k4DjvTRI7Q9iHS3_fPl8e9z8jE2H9xF5ZdbmSYLQv6vl9Jqw6q-RpAPK_6N';
 
 
 // 해시 처리
