@@ -21,7 +21,7 @@ const urlB64ToUint8Array = (base64String) => {
 };
 
 // 구독하기
-export const subscribeUser = (swRegistration) => {
+const subscribeUser = (swRegistration) => {
 
 	const applicationServerKey = urlB64ToUint8Array(PUSH_APPLICATION_SERVER_KEY);
 	const ACCESS_PUSH_TOKEN = 'ACCESS_PUSH_TOKEN';
@@ -36,7 +36,7 @@ export const subscribeUser = (swRegistration) => {
 	}).catch(e => console.log(`subscribe error`, e));
 };
 
-export const pushSubscription = (subscription) => {
+const pushSubscription = (subscription) => {
 	// 서버로 구독 정보 전송 
 	debugger;
 	console.log(subscription);
