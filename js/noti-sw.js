@@ -5,7 +5,7 @@ const PUSH_APPLICATION_SERVER_KEY = 'AAAAcbstLnc:APA91bHSLhyZKBG7XPMVx73NHDLH-n8
 
 
 // 해시 처리
-const urlB64ToUint8Array = (base64String: string) => {
+const urlB64ToUint8Array = (base64String) => {
 	const padding = '='.repeat((4 - base64String.length % 4) % 4);
 	const base64 = (base64String + padding)
 		.replace(/\-/g, '+')
@@ -78,20 +78,6 @@ const removeAccessPushToken = () => {
 	localStorage.removeItem(ACCESS_PUSH_TOKEN);
 };
 
-cosnt pushUnsubscription = pwaSubscriptionKey => '서버로 해당 키 제거 요청';
+//cosnt pushUnsubscription = pwaSubscriptionKey => '서버로 해당 키 제거 요청';
 
 
-
-
-export const initSubscribe = (swRegistration) => {
-
-	// 사용자가 브라우저에서 강제로 알람 차단 할 경우 남아있는 키 제거
-	if (Notification.permission !== 'granted') {
-		removeAccessPushToken();
-	}
-
-	// 알림 기본 설정일 경우 구독 시켜주기.
-	if (Notification.permission === 'default') {
-		subscribeUser(swRegistration);
-	}
-};
