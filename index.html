@@ -11,8 +11,10 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-title" content="pwa-test">
+	<!--
 	<link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
 	<link rel="apple-touch-icon-precomposed" href="/images/icons/icon-57x57.png">
+	-->
 	<style>
 		.add-button {
 			position: absolute;
@@ -31,6 +33,14 @@
 	<script src="/js/noti-sw.js"></script>
 	<script src="/js/pwa.js"></script>
 	<script src="/js/status.js"></script>
+	<script>
+		var userAgent = navigator.userAgent.toLowerCase();
+
+		if (userAgent.match('iphone')) {
+			document.write('<link rel="apple-touch-icon" href="/images/icons/icon-152x152.png" />')
+		}
+
+	</script>
 </body>
 
 
