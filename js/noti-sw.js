@@ -5,7 +5,7 @@ const PUSH_APPLICATION_SERVER_KEY = 'AAAAcbstLnc:APA91bHSLhyZKBG7XPMVx73NHDLH-n8
 
 
 // 해시 처리
-const urlB64ToUint8Array = (base64String: string) => {
+const urlB64ToUint8Array = (string) => {
 	const padding = '='.repeat((4 - base64String.length % 4) % 4);
 	const base64 = (base64String + padding)
 		.replace(/\-/g, '+')
