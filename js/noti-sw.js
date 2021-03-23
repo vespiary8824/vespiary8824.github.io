@@ -1,17 +1,17 @@
 
 //https://blog.woolta.com/categories/3/posts/195
 //https://joshua1988.github.io/web-development/pwa/pwa-push-noti-guide/
-let PUSH_APPLICATION_SERVER_KEY = 'AAAAcbstLnc:APA91bHSLhyZKBG7XPMVx73NHDLH-n8hTo8WD6zZ_iGE3QSyJAS1DL1csB37F2psi68H2VtB_qQlyRB_5k4DjvTRI7Q9iHS3_fPl8e9z8jE2H9xF5ZdbmSYLQv6vl9Jqw6q-RpAPK_6N';
-let ACCESS_PUSH_TOKEN = '488471604855';
+export const PUSH_APPLICATION_SERVER_KEY = 'AAAAcbstLnc:APA91bHSLhyZKBG7XPMVx73NHDLH-n8hTo8WD6zZ_iGE3QSyJAS1DL1csB37F2psi68H2VtB_qQlyRB_5k4DjvTRI7Q9iHS3_fPl8e9z8jE2H9xF5ZdbmSYLQv6vl9Jqw6q-RpAPK_6N';
+
 
 // 해시 처리
-const urlB64ToUint8Array = (base64String) => {
+const urlB64ToUint8Array = (base64String: string) => {
 	const padding = '='.repeat((4 - base64String.length % 4) % 4);
 	const base64 = (base64String + padding)
 		.replace(/\-/g, '+')
 		.replace(/_/g, '/');
 
-	const rawData = window.atob(base64);
+	const rawData = URL.createObjectURL(new Blob([base64], { type: 'text/plain' })); //window.atob(base64);
 	const outputArray = new Uint8Array(rawData.length);
 
 	for (let i = 0; i < rawData.length; ++i) {
@@ -21,9 +21,10 @@ const urlB64ToUint8Array = (base64String) => {
 };
 
 // 구독하기
-const subscribeUser = (swRegistration) => {
+export const subscribeUser = (swRegistration) => {
 
 	const applicationServerKey = urlB64ToUint8Array(PUSH_APPLICATION_SERVER_KEY);
+	const ACCESS_PUSH_TOKEN = 'ACCESS_PUSH_TOKEN';
 
 	swRegistration.pushManager.subscribe({
 		userVisibleOnly: true,
@@ -35,7 +36,7 @@ const subscribeUser = (swRegistration) => {
 	}).catch(e => console.log(`subscribe error`, e));
 };
 
-const pushSubscription = (subscription) => {
+export const pushSubscription = (subscription) => {
 	// 서버로 구독 정보 전송 
 	debugger;
 	console.log(subscription);
@@ -77,6 +78,20 @@ const removeAccessPushToken = () => {
 	localStorage.removeItem(ACCESS_PUSH_TOKEN);
 };
 
-//cosnt pushUnsubscription = pwaSubscriptionKey => '서버로 해당 키 제거 요청';
+cosnt pushUnsubscription = pwaSubscriptionKey => '서버로 해당 키 제거 요청'
 
 
+
+
+export const initSubscribe = (swRegistration) => {
+
+	// 사용자가 브라우저에서 강제로 알람 차단 할 경우 남아있는 키 제거
+	if (Notification.permission !== 'granted') {
+		removeAccessPushToken();
+	}
+
+	// 알림 기본 설정일 경우 구독 시켜주기.
+	if (Notification.permission === 'default') {
+		subscribeUser(swRegistration);
+	}
+};
