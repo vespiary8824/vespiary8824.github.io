@@ -2,7 +2,7 @@
 //https://blog.woolta.com/categories/3/posts/195
 //https://joshua1988.github.io/web-development/pwa/pwa-push-noti-guide/
 const PUSH_APPLICATION_SERVER_KEY = 'AAAAcbstLnc:APA91bHSLhyZKBG7XPMVx73NHDLH-n8hTo8WD6zZ_iGE3QSyJAS1DL1csB37F2psi68H2VtB_qQlyRB_5k4DjvTRI7Q9iHS3_fPl8e9z8jE2H9xF5ZdbmSYLQv6vl9Jqw6q-RpAPK_6N';
-
+const ACCESS_PUSH_TOKEN = '488471604855';
 
 // 해시 처리
 const urlB64ToUint8Array = (base64String) => {
@@ -38,7 +38,6 @@ const pushUnSubscription = (subscription) => {
 const subscribeUser = (swRegistration) => {
 
 	const applicationServerKey = urlB64ToUint8Array(PUSH_APPLICATION_SERVER_KEY);
-	const ACCESS_PUSH_TOKEN = 'ACCESS_PUSH_TOKEN';
 
 	swRegistration.pushManager.subscribe({
 		userVisibleOnly: true,
