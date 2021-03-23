@@ -5,7 +5,7 @@ const PUSH_APPLICATION_SERVER_KEY = 'AAAAcbstLnc:APA91bHSLhyZKBG7XPMVx73NHDLH-n8
 
 
 // 해시 처리
-const urlB64ToUint8Array = (string) => {
+const urlB64ToUint8Array = (base64String) => {
 	const padding = '='.repeat((4 - base64String.length % 4) % 4);
 	const base64 = (base64String + padding)
 		.replace(/\-/g, '+')
@@ -21,7 +21,7 @@ const urlB64ToUint8Array = (string) => {
 };
 
 // 구독하기
-export const subscribeUser = (swRegistration) => {
+const subscribeUser = (swRegistration) => {
 
 	const applicationServerKey = urlB64ToUint8Array(PUSH_APPLICATION_SERVER_KEY);
 	const ACCESS_PUSH_TOKEN = 'ACCESS_PUSH_TOKEN';
@@ -36,7 +36,7 @@ export const subscribeUser = (swRegistration) => {
 	}).catch(e => console.log(`subscribe error`, e));
 };
 
-export const pushSubscription = (subscription) => {
+const pushSubscription = (subscription) => {
 	// 서버로 구독 정보 전송 
 	debugger;
 	console.log(subscription);
@@ -83,7 +83,7 @@ cosnt pushUnsubscription = pwaSubscriptionKey => '서버로 해당 키 제거 �
 
 
 
-export const initSubscribe = (swRegistration) => {
+const initSubscribe = (swRegistration) => {
 
 	// 사용자가 브라우저에서 강제로 알람 차단 할 경우 남아있는 키 제거
 	if (Notification.permission !== 'granted') {
