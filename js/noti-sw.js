@@ -78,8 +78,9 @@ const removeAccessPushToken = () => {
 	localStorage.removeItem(ACCESS_PUSH_TOKEN);
 };
 
-cosnt pushUnsubscription = pwaSubscriptionKey => '서버로 해당 키 제거 요청';
-
+cosnt pushUnsubscription = pwaSubscriptionKey => {
+	console.log('서버로 해당 키 제거 요청');
+};
 
 
 
