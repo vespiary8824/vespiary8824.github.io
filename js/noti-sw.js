@@ -20,6 +20,20 @@ const urlB64ToUint8Array = (base64String) => {
 	return outputArray;
 };
 
+
+const pushSubscription = (subscription) => {
+	// 서버로 구독 정보 전송 
+	debugger;
+	console.log(subscription);
+};
+
+const pushUnSubscription = (subscription) => {
+	// 서버로 구독 정보 전송 
+	debugger;
+	console.log(subscription + '키 삭제 요청');
+};
+
+
 // 구독하기
 const subscribeUser = (swRegistration) => {
 
@@ -34,12 +48,6 @@ const subscribeUser = (swRegistration) => {
 		localStorage.setItem(ACCESS_PUSH_TOKEN, pwaSubscription.keys.auth); // 추후 코드 제거를 위해 저장합니다.
 		pushSubscription(pwaSubscription);
 	}).catch(e => console.log(`subscribe error`, e));
-};
-
-const pushSubscription = (subscription) => {
-	// 서버로 구독 정보 전송 
-	debugger;
-	console.log(subscription);
 };
 
 // 서버에서 푸쉬가 왔을때 감지하는 이벤트.
@@ -77,11 +85,6 @@ const removeAccessPushToken = () => {
 	pushUnsubscription(pwaSubscriptionKey);
 	localStorage.removeItem(ACCESS_PUSH_TOKEN);
 };
-
-cosnt pushUnsubscription = (pwaSubscriptionKey) => {
-	console.log(pwaSubscriptionKey + '서버로 해당 키 제거 요청');
-};
-
 
 
 const initSubscribe = (swRegistration) => {
